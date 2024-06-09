@@ -29,6 +29,7 @@ export const parseBMICalculatorArguments = (args: string[]): Stats => {
 export const parseExerciseCalculatorArguments = (args: string[]): Exercises => {
   if (args.length < 4) throw new Error("Not enough arguments");
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_first, _second, target, ...hours] = args;
 
   if (isNotNumber(target) && hours.find((h) => isNotNumber(h))) {
