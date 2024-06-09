@@ -13,7 +13,7 @@ const categories = (bmi: number): string => {
 };
 
 // height = cm, weight = kg
-const calculateBmi = (height: number, weight: number): string => {
+export const calculateBmi = (height: number, weight: number): string => {
   const heightM = height / 100;
   const bmi = weight / (heightM * heightM);
   return categories(bmi);
