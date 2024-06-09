@@ -1,3 +1,5 @@
+import { parseExerciseCalculatorArguments } from "./utils";
+
 interface ExerciseResult {
   periodLength: number;
   trainingDays: number;
@@ -56,4 +58,23 @@ const calculateExercises = (
   };
 };
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+try {
+  const { target, hours } = parseExerciseCalculatorArguments(process.argv);
+  console.log(calculateExercises(hours, target));
+} catch (error: unknown) {
+  let errorMessage = "Something went wrong.";
+  if (error instanceof Error) {
+    errorMessage += " Error: " + error.message;
+  }
+  console.log(errorMessage);
+}
+
+// npm run calculateExercises 2 1 0 2 4.5 0 3 1 0 4
+// { periodLength: 9,
+//     trainingDays: 6,
+//     success: false,
+//     rating: 2,
+//     ratingDescription: 'not too bad but could be better',
+//     target: 2,
+//     average: 1.7222222222222223
+//   }

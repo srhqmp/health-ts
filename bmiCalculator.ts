@@ -1,3 +1,5 @@
+import { parseBMICalculatorArguments } from "./utils";
+
 const categories = (bmi: number): string => {
   if (bmi < 18.5) {
     return "Underweight";
@@ -17,4 +19,16 @@ const calculateBmi = (height: number, weight: number): string => {
   return categories(bmi);
 };
 
-console.log(calculateBmi(180, 74));
+try {
+  const { height, weight } = parseBMICalculatorArguments(process.argv);
+  console.log(calculateBmi(height, weight));
+} catch (error: unknown) {
+  let errorMessage = "Something went wrong.";
+  if (error instanceof Error) {
+    errorMessage += " Error: " + error.message;
+  }
+  console.log(errorMessage);
+}
+
+// npm run calculateBmi 180 91
+// Overweight
