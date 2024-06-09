@@ -33,7 +33,7 @@ const getRating = (success: boolean, exercisedDaily: boolean): Rating => {
   };
 };
 
-const calculateExercises = (
+export const calculateExercises = (
   exerciseHours: number[],
   target: number
 ): ExerciseResult => {
